@@ -30,7 +30,7 @@ const usersignup = async (req, res) => {
     if (newUser) {
       generateToken(newUser._id, res); // its generate the token and cookie and send the cookie as response
       await newUser.save();
-      res.status(201).json({
+      res.status(200).json({
         _id: newUser._id,
         name: newUser.name,
         username: newUser.username,
@@ -46,12 +46,38 @@ const usersignup = async (req, res) => {
 };
 
 const userlogin = async (req, res) => {
-  res.status(200).json({ message: "login" });
-  console.log("login");
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    const isMatch = await bcryptjs.compare(password, user?.password || "");
+    if (!user || !isMatch) {
+      res.status(400).json({ message: "Invalid Username or Password!" });
+    } else {
+      generateToken(user._id, res);
+      res.status(200).json({
+        _id: user._id,
+        name: user.name,
+        username: user.username,
+        profilePic: user.profilePic,
+      });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ message: "Login Failed" });
+  }
 };
 
 const userlogout = async (req, res) => {
-  console.log("logout");
+  try {
+    res.cookie("jwt", "", {
+      httpOnly: true,
+      expires: new Date(Date.now()),
+    });
+    res.json({ message: "Logout Successfull" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ message: "Logout Failed" });
+  }
 };
 
 export { userlogin, userlogout, usersignup };

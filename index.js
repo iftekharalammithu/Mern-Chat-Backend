@@ -8,6 +8,7 @@ const app = express();
 const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
 app.use(express.json());
 
+// set the router
 app.use("/api/auth/", router);
 
 app.get("/", (req, res) => {
