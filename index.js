@@ -19,7 +19,7 @@ app.use("/api/messages/", messageroute);
 app.use("/api/user/", user_route);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Welcome to Chat Server!");
 });
 
 app.listen(5000, () => {
