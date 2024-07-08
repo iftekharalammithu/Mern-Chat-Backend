@@ -1,7 +1,15 @@
-# Node + Express Service Starter
+## A real-time chat application built with MERN stack
 
-This is a simple hello world express.js server.
+### API
 
-## Getting Started
-
-Previews should run automatically when starting a workspace. Run the `Show Web Preview` IDX command to see the preview.
+- `/api/auth/signup`,`/api/auth/login`,`/api/auth/logout`:
+  - `POST`: Authenticate a user
+- `/api/users`:
+  - `GET`: Get all users
+  - `POST`: Create a new user
+- `/api/chat`:
+  - `GET`: Get all chats
+  - `POST`: Create a new chat
+- `/api/messages/`:
+  - `GET`: Get all messages in a chat
+  - `POST`: Create a new message

@@ -4,6 +4,7 @@ import router from "./Route/auth_route.js";
 import MongoDBConnect from "./DB/mongoDB_connect.js";
 import messageroute from "./Route/Message_route.js";
 import cookies from "cookie-parser";
+import user_route from "./Route/User_route.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(cookies());
 // set the router
 app.use("/api/auth/", router);
 app.use("/api/messages/", messageroute);
+app.use("/api/user/", user_route);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
