@@ -5,22 +5,23 @@ const protectroute = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
     if (!token) {
-      res.status(401).json({ message: "User Not Authorized!" });
+      return res.status(401).json({ message: "User Not Authorized!" });
     }
     const verifyToken = jwt.verify(token, process.env.JWT_SECRET);
     if (!verifyToken) {
-      res.status(401).json({ message: "Invalid Token!" });
+      return res.status(401).json({ message: "Invalid Token!" });
     }
     const user = await User.findById(verifyToken.userid).select("-password");
     if (!user) {
-      res.status(401).json({ message: "User Not Found!" });
+      return res.status(401).json({ message: "User Not Found!" });
     }
-    req.user = user;
+    // console.log(user._id);
+    req.user = user._id;
 
     next();
   } catch (error) {
     console.log("Error to send Message");
-    res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 

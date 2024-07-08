@@ -4,6 +4,6 @@ import { protectroute } from "../Middle_ware/Message_Middle_ware.js";
 
 const messageroute = express.Router();
 
-messageroute.post("/message/:senderID", protectroute, sendMessage);
+messageroute.post("/message/:receiverid", protectroute, sendMessage);
 
 export default messageroute;
