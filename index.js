@@ -10,12 +10,13 @@ app.use(express.json());
 
 // set the router
 app.use("/api/auth/", router);
+// app.use("/api/message/", router);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(port, () => {
+app.listen(5000, () => {
   MongoDBConnect();
   console.log(`Listening on http://localhost:${port}`);
 });

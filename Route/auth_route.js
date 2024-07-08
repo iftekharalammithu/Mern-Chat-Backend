@@ -13,4 +13,8 @@ router.post("/logout", userlogout);
 
 router.post("/login", userlogin);
 
+router.post("/message", (req, res) => {
+  res.send("message");
+});
+
 export default router;
