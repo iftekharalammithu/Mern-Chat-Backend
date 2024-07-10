@@ -5,11 +5,15 @@ import MongoDBConnect from "./DB/mongoDB_connect.js";
 import messageroute from "./Route/Message_route.js";
 import cookies from "cookie-parser";
 import user_route from "./Route/User_route.js";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
 const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
+
+app.use(cors());
+
 app.use(express.json());
 app.use(cookies());
 
@@ -22,7 +26,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to Chat Server!");
 });
 
-app.listen(5000, () => {
+app.listen(port, () => {
   MongoDBConnect();
   console.log(`Listening on http://localhost:${port}`);
 });
