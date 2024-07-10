@@ -2,7 +2,7 @@
 
 ## Deployed API
 
-`https://mern-chat-backend-3af8.onrender.com/`
+[Copy to clipboard](https://mern-chat-backend-3af8.onrender.com/)
 
 ### API
 
