@@ -70,7 +70,7 @@ const userlogin = async (req, res) => {
 
 const userlogout = async (req, res) => {
   try {
-    res.cookie("jwt", "", {
+    res.cookie(process.env.JWS_NAME, "", {
       httpOnly: true,
       expires: new Date(Date.now()),
     });
