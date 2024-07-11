@@ -12,7 +12,13 @@ dotenv.config();
 const app = express();
 const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
 
-app.use(cors());
+const corsOptions = {
+  origin:
+    "https://9000-idx-chat-app-mern-stack-1720103279964.cluster-7ubberrabzh4qqy2g4z7wgxuw2.cloudworkstations.dev",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
