@@ -9,7 +9,7 @@ const generateToken = (userid, res) => {
   res.cookie("jwt", token, {
     maxAge: 30 * 24 * 60 * 60 * 1000, // Cookie expires in 30 days
     httpOnly: true, // Prevent client-side access to the cookie
-    sameSite: "strict", // Prevent CSRF attacks
+    sameSite: "Lax", // Prevent CSRF attacks
     secure: process.env.NODE_ENV !== "development" ? true : false,
   });
 };
