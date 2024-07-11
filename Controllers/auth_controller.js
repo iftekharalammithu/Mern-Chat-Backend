@@ -5,7 +5,7 @@ import generateToken from "../Utils/generateToken.js";
 const usersignup = async (req, res) => {
   try {
     const { name, username, password, confirmPassword, gender } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     if (password !== confirmPassword) {
       return res.status(400).json({ message: "password not match" });
     }
@@ -52,7 +52,7 @@ const userlogin = async (req, res) => {
     const user = await User.findOne({ username });
     const isMatch = await bcryptjs.compare(password, user?.password || "");
     if (!user || !isMatch) {
-      res.status(400).json({ message: "Invalid Username or Password!" });
+      res.status(400).json({ Error: "Invalid Username or Password!" });
     } else {
       generateToken(user._id, res);
       res.status(200).json({
@@ -64,7 +64,7 @@ const userlogin = async (req, res) => {
     }
   } catch (error) {
     console.log(error.message);
-    res.status(400).json({ message: "Login Failed" });
+    res.status(400).json({ Error: "Login Failed" });
   }
 };
 
@@ -77,7 +77,7 @@ const userlogout = async (req, res) => {
     res.json({ message: "Logout Successfull" });
   } catch (error) {
     console.log(error.message);
-    res.status(400).json({ message: "Logout Failed" });
+    res.status(400).json({ Error: "Logout Failed" });
   }
 };
 
