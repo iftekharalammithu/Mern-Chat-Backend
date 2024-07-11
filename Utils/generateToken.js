@@ -6,7 +6,7 @@ const generateToken = (userid, res) => {
   const token = jwt.sign({ userid }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
-  res.cookie(process.env.JWS_NAME, token, {
+  res.cookie("jwt", token, {
     maxAge: 30 * 24 * 60 * 60 * 1000, // Cookie expires in 30 days
     httpOnly: true, // Prevent client-side access to the cookie
     sameSite: "strict", // Prevent CSRF attacks

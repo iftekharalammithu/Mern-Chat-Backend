@@ -3,8 +3,8 @@ import User from "../Models/User_Model.js";
 
 const protectroute = async (req, res, next) => {
   try {
+    // console.log(req);
     const token = req.cookies.jwt;
-    console.log(req.cookies);
     if (!token) {
       return res.status(401).json({ message: "User Not Authorized!" });
     }
