@@ -5,6 +5,7 @@ const protectroute = async (req, res, next) => {
   try {
     // console.log(req);
     const token = req.cookies.jwt;
+    // console.log(token);
     if (!token) {
       return res.status(401).json({ message: "User Not Authorized!" });
     }
