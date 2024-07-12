@@ -4,6 +4,6 @@ import { protectroute } from "../Middle_ware/Message_Middle_ware.js";
 
 const user_route = express.Router();
 
-user_route.get("/", protectroute, get_user_sidebar);
+user_route.post("/", protectroute, get_user_sidebar);
 
 export default user_route;
