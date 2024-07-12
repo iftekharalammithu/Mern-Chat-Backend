@@ -11,6 +11,8 @@ const generateToken = (userid, res) => {
     httpOnly: true, // Prevent client-side access to the cookie
     sameSite: "Lax", // Prevent CSRF attacks
     secure: true,
+    domain: "mern-chat-backend-3af8.onrender.com",
+    path: '/', 
   });
 };
 
