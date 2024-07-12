@@ -12,8 +12,6 @@ const generateToken = (userid, res) => {
     httpOnly: true, // Prevent client-side access to the cookie
     sameSite: "Lax", // Prevent CSRF attacks
     secure: true,
-    domain: "testchat-coy2bse2e-mithus-projects-9636a7cf.vercel.app",
-    path: "/",
   });
 };
 
