@@ -13,7 +13,7 @@ const app = express();
 const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
 
 const corsOptions = {
-  origin: "https://testchat-53zh3ubkq-mithus-projects-9636a7cf.vercel.app",
+  origin: "https://testchat-coy2bse2e-mithus-projects-9636a7cf.vercel.app",
   credentials: true,
 };
 
