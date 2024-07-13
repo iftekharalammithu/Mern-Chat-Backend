@@ -14,6 +14,7 @@ const io = new Server(server, {
   },
 });
 
+
 const usersocketmap = {};
 
 io.on("connection", (socket) => {
@@ -32,4 +33,9 @@ io.on("connection", (socket) => {
   });
 });
 
-export { app, io, server };
+const receiver_socket_id = (userid) => {
+  return usersocketmap[userid];
+};
+
+
+export { app, io, server , receiver_socket_id };
