@@ -29,13 +29,13 @@ const sendMessage = async (req, res) => {
     // await conversation.save();
     // await newmessage.save();
 
+    // Save both the new message and the updated conversation concurrently
+    await Promise.all([conversation.save(), newmessage.save()]);
+
     const getreceiversocket = receiver_socket_id(receiverid);
     if (getreceiversocket) {
       io.to(getreceiversocket).emit("new_message", newmessage);
     }
-
-    // Save both the new message and the updated conversation concurrently
-    await Promise.all([conversation.save(), newmessage.save()]);
 
     res.status(200).json(newmessage);
   } catch (err) {
