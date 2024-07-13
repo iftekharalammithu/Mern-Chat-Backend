@@ -6,10 +6,10 @@ import messageroute from "./Route/Message_route.js";
 import user_route from "./Route/User_route.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { app, server } from "./Socket/Socket.js";
 
 dotenv.config();
 
-const app = express();
 const port = parseInt(process.env.PORT) || process.argv[3] || 8080;
 // app.set("trust proxy", 1);
 const corsOptions = {
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to Chat Server!");
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   MongoDBConnect();
   console.log(`Listening on http://localhost:${port}`);
 });
