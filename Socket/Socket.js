@@ -14,7 +14,6 @@ const io = new Server(server, {
   },
 });
 
-
 const usersocketmap = {};
 
 io.on("connection", (socket) => {
@@ -23,13 +22,15 @@ io.on("connection", (socket) => {
   const userid = socket.handshake.query.userid;
   if (userid != "undefined") {
     usersocketmap[userid] = socket.id;
+    console.log("usersocketmap", usersocketmap);
+    console.log("obj key:", Object.keys(usersocketmap));
   }
-  io.emit("user_online" , Object.keys(usersocketmap))
+  io.emit("user_online", Object.keys(usersocketmap));
 
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
     delete usersocketmap[userid];
-    io.emit("user_online" , Object.keys(usersocketmap))
+    io.emit("user_online", Object.keys(usersocketmap));
   });
 });
 
@@ -37,5 +38,4 @@ const receiver_socket_id = (userid) => {
   return usersocketmap[userid];
 };
 
-
-export { app, io, server , receiver_socket_id };
+export { app, io, server, receiver_socket_id };
