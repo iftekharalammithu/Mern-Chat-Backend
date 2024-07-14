@@ -33,6 +33,8 @@ const sendMessage = async (req, res) => {
     await Promise.all([conversation.save(), newmessage.save()]);
 
     const getreceiversocket = receiver_socket_id(receiverid);
+    console.log(getreceiversocket);
+
     if (getreceiversocket) {
       io.to(getreceiversocket).emit("new_message", newmessage);
     }
