@@ -18,10 +18,10 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // set the router
 app.use("/api/auth/", router);
